@@ -38,6 +38,7 @@
                 <td><c:out value="${user.name}" /></td>
                 <td><c:out value="${user.login}" /></td>
                 <td><c:out value="${user.password}" /></td>
+                <td><c:out value="${user.role}" /></td>
                 <td>
                     <a href="<c:url value="/update?id=${user.id}"/>">Update</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;

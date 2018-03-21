@@ -21,8 +21,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private ROLE role;
+    @Column(name = "role")
+    private String role;
 
     public User() {
     }
@@ -81,8 +81,12 @@ public class User {
         this.password = password;
     }
 
-    public enum ROLE {
-        USER, ADMIN
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override

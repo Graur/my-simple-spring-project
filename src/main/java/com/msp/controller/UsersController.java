@@ -91,7 +91,7 @@ public class UsersController {
 
         Cookie[] cookies = req.getCookies();
         for(Cookie cookie : cookies) {
-            if (cookie.getName().equals(User.ROLE.ADMIN.toString())) {
+            if (cookie.getName().equals("admin")) {
                 login = cookie.getValue();
             } else {
                 login = cookie.getValue();
@@ -112,14 +112,14 @@ public class UsersController {
         String result = null;
 
         if(LoginServlet.userIsExist(login, pass, usersList)){
-            User.ROLE userRole = LoginServlet.getRoleByLoginAndPass(login, pass);
+            String userRole = LoginServlet.getRoleByLoginAndPass(login, pass);
             deleteCookies(cookies, resp);
-            cookie = new Cookie(userRole.toString(), login);
-            System.out.println("user ROLE: " + userRole.toString());
+            cookie = new Cookie(userRole, login);
+            System.out.println("user ROLE: " + userRole);
             resp.addCookie(cookie);
-            if ((userRole.toString()).equals(User.ROLE.ADMIN.toString())) {
+            if (userRole.equals("admin")) {
                 result = "redirect:/admin";
-            } else if ((userRole.toString()).equals(User.ROLE.USER.toString())){
+            } else if (userRole.equals("USER")){
                 result = "redirect:/user";
             }
         } else {

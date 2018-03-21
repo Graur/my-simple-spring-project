@@ -29,14 +29,14 @@ public class UsersFilter implements Filter {
 
         Cookie[] cookies = req.getCookies();
         for(Cookie cookie : cookies){
-            if(cookie.getName().equals(User.ROLE.ADMIN.toString())){
+            if(cookie.getName().equals("admin")){
                 System.out.println("com.msp.filter role ADMIN");
-                System.out.println(User.ROLE.ADMIN.toString());
+                System.out.println("admin");
                 chain.doFilter(req, resp);
                 return;
-            } else if ((cookie.getName().equals(User.ROLE.USER.toString())) || (cookie.getName().equals(User.ROLE.ADMIN.toString()))){
+            } else if ((cookie.getName().equals("USER")) || (cookie.getName().equals("admin"))){
                 System.out.println("com.msp.filter role User");
-                System.out.println(User.ROLE.USER.toString());
+                System.out.println("USER");
                 RequestDispatcher requestDispatcher = req.getRequestDispatcher("/user");
                 requestDispatcher.forward(req, resp);
                 return;

@@ -73,6 +73,14 @@
                     </td>
                 </tr>
                 <tr>
+                    <th>ROLE: </th>
+                    <td>
+                        <input type="text" name="role" size="45" placeholder="Enter role"
+                               value="<c:out value='${user.role}' />"
+                        />
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2" align="center">
                         <input type="submit" value="Save" />
                     </td>
