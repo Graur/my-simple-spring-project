@@ -14,11 +14,6 @@ public class UsersDaoHibernateImpl implements UsersDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
-//    public UsersDaoHibernateImpl(SessionFactory sessionFactory) {
-//        this.sessionFactory = sessionFactory;
-//    }
-
-
     public List<User> getAllUsers() {
         Session session = sessionFactory.openSession();
         List<User> users = session.createQuery("FROM com.msp.model.User").list();

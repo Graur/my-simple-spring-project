@@ -7,12 +7,10 @@ import com.msp.servlets.LogoutServlet;
 import com.msp.servlets.UserWriterServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -59,8 +57,7 @@ public class UsersController {
 
     //URL ="/delete", delete user
     @RequestMapping(value = {"/delete"}, method = RequestMethod.GET)
-    public ModelAndView deleteUserForm(HttpServletRequest req) {
-        int id = Integer.parseInt(req.getParameter("id"));
+    public ModelAndView deleteUserForm(@RequestParam("id") int id) {
         dbService.deleteUser(id);
         System.out.println("Controller's deleteUserForm method");
         return new ModelAndView("redirect:/admin");
@@ -136,5 +133,14 @@ public class UsersController {
         deleteCookies(cookies, resp);
         System.out.println("Controller's logoutUser method");
         return "WEB-INF/views/logoutprocess";
+    }
+
+    @PostConstruct
+    public void init(){
+        User admin = new User(1,"admin", "admin", "admin", "admin");
+        User user = new User(1,"user", "user", "user", "USER");
+        dbService.insertUser(admin);
+        dbService.insertUser(user);
+        System.out.println("user1 added from postconstruct method");
     }
 }
