@@ -1,9 +1,10 @@
 package com.msp.controller;
 
-import com.msp.dbService.DBService;
+import com.msp.dbService.RoleService;
+import com.msp.dbService.UserService;
+import com.msp.model.Role;
 import com.msp.model.User;
 import com.msp.servlets.LoginServlet;
-import com.msp.servlets.LogoutServlet;
 import com.msp.servlets.UserWriterServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,9 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static com.msp.servlets.LogoutServlet.deleteCookies;
 
@@ -22,7 +25,10 @@ import static com.msp.servlets.LogoutServlet.deleteCookies;
 public class UsersController {
 
     @Autowired
-    DBService dbService;
+    UserService userService;
+
+    @Autowired
+    RoleService roleService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String startUp(){
@@ -34,7 +40,7 @@ public class UsersController {
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView userForm() {
         ModelAndView mav = new ModelAndView("WEB-INF/views/UsersList");
-        List<User> listUsers = dbService.getAllUsers();
+        List<User> listUsers = userService.getAllUsers();
         mav.addObject("listUsers", listUsers);
         System.out.println("Controller's userForm method");
         return mav;
@@ -50,7 +56,7 @@ public class UsersController {
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ModelAndView insertUserFormFromPostMethod(@ModelAttribute User user) {
-        dbService.insertUser(user);
+        userService.insertUser(user);
         System.out.println("Controller's insertUserFormFromPostMethod method");
         return new ModelAndView("redirect:/admin");
     }
@@ -58,7 +64,7 @@ public class UsersController {
     //URL ="/delete", delete user
     @RequestMapping(value = {"/delete"}, method = RequestMethod.GET)
     public ModelAndView deleteUserForm(@RequestParam("id") int id) {
-        dbService.deleteUser(id);
+        userService.deleteUser(id);
         System.out.println("Controller's deleteUserForm method");
         return new ModelAndView("redirect:/admin");
     }
@@ -68,7 +74,7 @@ public class UsersController {
     public ModelAndView updateUserFormGetMethod(@ModelAttribute User user) {
         ModelAndView mav = new ModelAndView("WEB-INF/views/UserForm");
         int updateUserId = user.getId();
-        User existingUser = dbService.getUser(updateUserId);
+        User existingUser = userService.getUser(updateUserId);
         mav.addObject("user", existingUser);
         System.out.println("Controller's updateUserFormGetMethod method");
         return mav;
@@ -76,7 +82,7 @@ public class UsersController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView updateUserFormPostMethod(@ModelAttribute User user) {
-        dbService.updateUser(user);
+        userService.updateUser(user);
         System.out.println("Controller's updateUserFormPostMethod method");
         return new ModelAndView("redirect:/admin");
     }
@@ -105,7 +111,7 @@ public class UsersController {
         String pass = req.getParameter("password");
         Cookie[] cookies = req.getCookies();
         Cookie cookie;
-        List<User> usersList = dbService.getAllUsers();
+        List<User> usersList = userService.getAllUsers();
         String result = null;
 
         if(LoginServlet.userIsExist(login, pass, usersList)){
@@ -137,10 +143,31 @@ public class UsersController {
 
     @PostConstruct
     public void init(){
-        User admin = new User(1,"admin", "admin", "admin", "admin");
-        User user = new User(1,"user", "user", "user", "USER");
-        dbService.insertUser(admin);
-        dbService.insertUser(user);
-        System.out.println("user1 added from postconstruct method");
+        Role roleAdmin = new Role();
+        roleAdmin.setName("ADMIN");
+        roleService.addRole(roleAdmin);
+
+        Role roleUser = new Role();
+        roleUser.setName("USER");
+        roleService.addRole(roleUser);
+
+        User admin = new User();
+        admin.setLogin("admin");
+        admin.setPassword("admin");
+        Set<Role> adminRoles = new HashSet<>();
+        adminRoles.add(roleAdmin);
+        adminRoles.add(roleUser);
+        admin.setRoles(adminRoles);
+
+        userService.insertUser(admin);
+
+        User user = new User();
+        user.setLogin("user");
+        user.setPassword("user");
+        Set<Role> userRoles = new HashSet<>();
+        userRoles.add(roleUser);
+        user.setRoles(userRoles);
+
+        userService.insertUser(user);
     }
 }

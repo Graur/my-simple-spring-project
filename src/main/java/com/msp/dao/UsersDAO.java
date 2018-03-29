@@ -10,4 +10,5 @@ public interface UsersDAO {
     void deleteUser(int id);
     void updateUser(User user);
     User getUser(int id);
+    User getUserByLogin(String login);
 }

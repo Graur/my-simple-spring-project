@@ -1,15 +1,17 @@
 package com.msp.dbService;
 
 import com.msp.dao.UsersDAO;
+import com.msp.model.Role;
 import com.msp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
-public class DBServiceImpl implements DBService {
+public class UserServiceImpl implements UserService {
     @Autowired
     private UsersDAO usersDAO;
 
@@ -41,6 +43,15 @@ public class DBServiceImpl implements DBService {
     @Transactional
     public User getUser(int id) {
         return this.usersDAO.getUser(id);
+    }
+
+    public Set<Role> getUserRoles(String login) {
+        return usersDAO.getUserByLogin(login).getRoles();
+    }
+
+    @Override
+    public User getUserByLogin(String login) {
+        return usersDAO.getUserByLogin(login);
     }
 }
 

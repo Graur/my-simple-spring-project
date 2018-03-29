@@ -10,10 +10,22 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class UsersDaoHibernateImpl implements UsersDAO {
+public class UsersDaoImpl implements UsersDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Override
+    public User getUserByLogin(String login){
+        Session session = sessionFactory.openSession();
+        String queryString = "FROM com.msp.model.User WHERE login = :login";
+        Query query = session.createQuery(queryString);
+        query.setParameter("login", login);
+        User user = (User) query.uniqueResult();
+        session.close();
+        return user;
+    }
+
+    @Override
     public List<User> getAllUsers() {
         Session session = sessionFactory.openSession();
         List<User> users = session.createQuery("FROM com.msp.model.User").list();
@@ -21,6 +33,7 @@ public class UsersDaoHibernateImpl implements UsersDAO {
         return users;
     }
 
+    @Override
     public void insertUser(User user){
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -29,6 +42,7 @@ public class UsersDaoHibernateImpl implements UsersDAO {
         session.close();
     }
 
+    @Override
     public void deleteUser(int id){
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -38,6 +52,7 @@ public class UsersDaoHibernateImpl implements UsersDAO {
         session.close();
     }
 
+    @Override
     public void updateUser(User user) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -46,6 +61,7 @@ public class UsersDaoHibernateImpl implements UsersDAO {
         session.close();
     }
 
+    @Override
     public User getUser(int id){
         Session session = sessionFactory.openSession();
         session.beginTransaction();
