@@ -8,6 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>User Management Application</title>
@@ -75,9 +76,12 @@
                 <tr>
                     <th>ROLE: </th>
                     <td>
-                        <input type="text" name="role" size="45" placeholder="Enter role"
-                               value="<c:out value='${user.role}' />"
-                        />
+                        <label>
+                            <select name="role">
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="USER">USER</option>
+                            </select>
+                        </label>
                     </td>
                 </tr>
                 <tr>

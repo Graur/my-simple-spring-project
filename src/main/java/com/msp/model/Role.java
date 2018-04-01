@@ -12,9 +12,9 @@ import org.springframework.security.core.GrantedAuthority;
  */
 public class Role implements GrantedAuthority {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "name", length = 20, nullable = false)
     private String name;
@@ -40,11 +40,11 @@ public class Role implements GrantedAuthority {
         this.name = name;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -60,7 +60,7 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String toString() {
-        return "Role with id " + id + " and name " + name;
+        return name;
     }
 
     public String getAuthority() {

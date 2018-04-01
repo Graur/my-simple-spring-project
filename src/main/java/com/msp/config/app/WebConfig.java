@@ -30,13 +30,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("/");
+        viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
 
-//    @Bean(initMethod = "init")
-//    public OriginDataInitializer initializer(){
-//        return new OriginDataInitializer();
-//    }
+    @Bean(initMethod = "init")
+    public OriginDataInitializer initializer(){
+        return new OriginDataInitializer();
+    }
 }

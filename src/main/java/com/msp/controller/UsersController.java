@@ -4,22 +4,19 @@ import com.msp.dbService.RoleService;
 import com.msp.dbService.UserService;
 import com.msp.model.Role;
 import com.msp.model.User;
-import com.msp.servlets.LoginServlet;
-import com.msp.servlets.UserWriterServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.annotation.PostConstruct;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.security.Principal;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.msp.servlets.LogoutServlet.deleteCookies;
 
 @Controller
 public class UsersController {
@@ -30,16 +27,24 @@ public class UsersController {
     @Autowired
     RoleService roleService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String startUp(){
-        System.out.println("redirect:/login");
-        return "WEB-INF/views/index";
+    @RequestMapping(value = { "/" }, method = RequestMethod.GET)
+    public String homePage(ModelMap model) {
+        return "index";
+    }
+
+    //URL ="user", write the message
+    @RequestMapping(value = { "/user"}, method = RequestMethod.GET)
+    public String userPage(ModelMap model, Principal principal) {
+        String userName = principal.getName();
+        model.addAttribute("message", "Hello, " + userName + "!");
+
+        return "user";
     }
 
     //URL ="admin", list all users
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView userForm() {
-        ModelAndView mav = new ModelAndView("WEB-INF/views/UsersList");
+        ModelAndView mav = new ModelAndView("users_list");
         List<User> listUsers = userService.getAllUsers();
         mav.addObject("listUsers", listUsers);
         System.out.println("Controller's userForm method");
@@ -47,17 +52,32 @@ public class UsersController {
     }
 
     //URL ="insert", add user
-    @RequestMapping(value = "/insert", method = RequestMethod.GET)
+   @RequestMapping(value = "/insert", method = RequestMethod.GET)
     public ModelAndView insertUserFormFromGetMethod() {
-        ModelAndView mav = new ModelAndView("WEB-INF/views/UserForm");
+        ModelAndView mav = new ModelAndView("user_form");
         System.out.println("Controller's insertUserFormFromGetMethod method");
         return mav;
     }
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
-    public ModelAndView insertUserFormFromPostMethod(@ModelAttribute User user) {
+    public ModelAndView insertUserFormFromPostMethod(@ModelAttribute User user, @RequestParam("role") String role) {
+        Role newRole = new Role();
+        newRole.setName(role);
+        roleService.addRole(newRole);
+        System.out.println("Role: " + role);
+        Set<Role> roles = new HashSet<>();
+
+        if(role.equals("ADMIN")){
+            Role adminRole = new Role();
+            adminRole.setName("USER");
+            roles.add(adminRole);
+            roleService.addRole(adminRole);
+        }
+        roles.add(newRole);
+        user.setRoles(roles);
         userService.insertUser(user);
         System.out.println("Controller's insertUserFormFromPostMethod method");
+        System.out.println("User role: " + user.getRoles() + " AND user info is: " + user.toString());
         return new ModelAndView("redirect:/admin");
     }
 
@@ -72,7 +92,7 @@ public class UsersController {
     //URL ="update", update user
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public ModelAndView updateUserFormGetMethod(@ModelAttribute User user) {
-        ModelAndView mav = new ModelAndView("WEB-INF/views/UserForm");
+        ModelAndView mav = new ModelAndView("user_form");
         int updateUserId = user.getId();
         User existingUser = userService.getUser(updateUserId);
         mav.addObject("user", existingUser);
@@ -81,93 +101,19 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public ModelAndView updateUserFormPostMethod(@ModelAttribute User user) {
+    public ModelAndView updateUserFormPostMethod(@ModelAttribute User user, @PathVariable String role) {
+        Set<Role> roles = new HashSet<>();
+
         userService.updateUser(user);
         System.out.println("Controller's updateUserFormPostMethod method");
         return new ModelAndView("redirect:/admin");
     }
 
-    //URL ="user", write the message
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public void printMessageToUser(HttpServletRequest req, HttpServletResponse resp){
-        String login = null;
-
-        Cookie[] cookies = req.getCookies();
-        for(Cookie cookie : cookies) {
-            if (cookie.getName().equals("admin")) {
-                login = cookie.getValue();
-            } else {
-                login = cookie.getValue();
-            }
-        }
-        System.out.println("Controller's printMessageToUser method");
-        UserWriterServlet.printToBrowser(req,resp,login);
-    }
-
-    //URL ="login", write the message
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginUser(HttpServletRequest req, HttpServletResponse resp){
-        String login = req.getParameter("login");
-        String pass = req.getParameter("password");
-        Cookie[] cookies = req.getCookies();
-        Cookie cookie;
-        List<User> usersList = userService.getAllUsers();
-        String result = null;
-
-        if(LoginServlet.userIsExist(login, pass, usersList)){
-            String userRole = LoginServlet.getRoleByLoginAndPass(login, pass);
-            deleteCookies(cookies, resp);
-            cookie = new Cookie(userRole, login);
-            System.out.println("user ROLE: " + userRole);
-            resp.addCookie(cookie);
-            if (userRole.equals("admin")) {
-                result = "redirect:/admin";
-            } else if (userRole.equals("USER")){
-                result = "redirect:/user";
-            }
-        } else {
-            result = "redirect:/";
-        }
-        System.out.println(result);
-        return result;
-    }
-
     //URL ="logout", write the message
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logoutUser(HttpServletRequest req, HttpServletResponse resp){
-        Cookie[] cookies = req.getCookies();
-        deleteCookies(cookies, resp);
+    public String logoutUser(){
+
         System.out.println("Controller's logoutUser method");
-        return "WEB-INF/views/logoutprocess";
-    }
-
-    @PostConstruct
-    public void init(){
-        Role roleAdmin = new Role();
-        roleAdmin.setName("ADMIN");
-        roleService.addRole(roleAdmin);
-
-        Role roleUser = new Role();
-        roleUser.setName("USER");
-        roleService.addRole(roleUser);
-
-        User admin = new User();
-        admin.setLogin("admin");
-        admin.setPassword("admin");
-        Set<Role> adminRoles = new HashSet<>();
-        adminRoles.add(roleAdmin);
-        adminRoles.add(roleUser);
-        admin.setRoles(adminRoles);
-
-        userService.insertUser(admin);
-
-        User user = new User();
-        user.setLogin("user");
-        user.setPassword("user");
-        Set<Role> userRoles = new HashSet<>();
-        userRoles.add(roleUser);
-        user.setRoles(userRoles);
-
-        userService.insertUser(user);
+        return "index";
     }
 }

@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 /**
                  * Имя инпута для имени в форме логина (может быть username,login,email или что-то подобное)
                  */
-                .usernameParameter("username")
+                .usernameParameter("login")
                 /**
                  * Имя инпута для пароля в форме логина
                  */
