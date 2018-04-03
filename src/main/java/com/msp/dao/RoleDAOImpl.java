@@ -28,7 +28,9 @@ public class RoleDAOImpl implements RoleDAO{
     @Override
     public void addRole(Role role) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.save(role);
+        session.getTransaction().commit();
         session.close();
     }
 
@@ -54,7 +56,9 @@ public class RoleDAOImpl implements RoleDAO{
     @Override
     public void updateRoles(Role role) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.update(role);
+        session.getTransaction().commit();
         session.close();
     }
 
@@ -62,7 +66,9 @@ public class RoleDAOImpl implements RoleDAO{
     public void deleteRoleById(int id) {
         Session session = sessionFactory.openSession();
         Role role = session.load(Role.class, id);
+        session.beginTransaction();
         session.delete(role);
+        session.getTransaction().commit();
         session.close();
     }
 }

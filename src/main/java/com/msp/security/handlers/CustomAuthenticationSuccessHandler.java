@@ -18,9 +18,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 
-/**
- * Handler (то что выберет дальнейший url в зависимости от роли)
- */
+
 @Service
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     protected Logger logger = LoggerFactory.getLogger(CustomAuthenticationSuccessHandler.class);
@@ -47,16 +45,13 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
     protected String determineTargetUrl(Authentication authentication) {
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        /**
-         * Если коллекция ролей у юзера содержит роль ADMIN - отправляет на url /admin
-         */
+
         if (authorities.contains(new Role("ADMIN"))){
             return "/admin";
-        } else if (authorities.contains(new Role("USER"))) {/**Если коллекция ролей у юзера не содержит роль ADMIN , но содержит роль USER - отправляет на url /user
-         */
+        } else if (authorities.contains(new Role("USER"))) {
             return "/user";
         } else {
-            throw new IllegalStateException(); /** Если не содержит ни одну из указанных ролей - бросает исключение **/
+            throw new IllegalStateException();
         }
     }
 

@@ -36,6 +36,6 @@
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
     <button class="w3-btn w3-round-large" onclick="location.href='/'">Back to main</button>
 </div>
-<a href="/logout">Logout</a>
+<a href="/">Logout</a>
 </body>
 </html>

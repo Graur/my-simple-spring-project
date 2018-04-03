@@ -26,10 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
-    /**
-     *
-     * Конфигурация
-     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
@@ -38,45 +34,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // отключена защита csrf на время тестов
         http.csrf().disable().addFilterBefore(filter, CsrfFilter.class);
         http.authorizeRequests()
-                /** Предоставление доступа к /user/** только для пользователей,
-                 * c ролью USER
-                 * user/** - означает любые url начинающиеся с /user
-                 */
                 .antMatchers("/user/**").hasAnyAuthority("USER")
-                /**
-                 *Аналогично для url /admin/** и пользователей имеющих роль ADMIN
-                 */
                 .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .and()
                 .formLogin()
-                /**
-                 * Форма логина находится на страницк с url "/"
-                 */
                 .loginPage("/")
-                /**
-                 * url на который отправляется запрос GET при ошибке
-                 */
                 .failureUrl("/?error")
-                /**
-                 * Handler (то что выберет дальнейший url в зависимости от роли)
-                 */
                 .successHandler(customAuthenticationSuccessHandler)
-                /**
-                 * Имя инпута для имени в форме логина (может быть username,login,email или что-то подобное)
-                 */
                 .usernameParameter("login")
-                /**
-                 * Имя инпута для пароля в форме логина
-                 */
                 .passwordParameter("password");
 
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        /**
-         * Authentication Service - то, что проверяет наличие в базе юзера с введенными данными
-         */
         auth.userDetailsService(authenticationService);
     }
 }

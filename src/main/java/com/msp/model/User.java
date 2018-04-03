@@ -30,7 +30,6 @@ public class User implements UserDetails{
     @JoinTable(name = "permissions",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
-
     private Set<Role> roles;
 
     @Column(name = "enabled", nullable = false)

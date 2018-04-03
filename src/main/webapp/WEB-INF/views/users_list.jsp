@@ -16,7 +16,7 @@
 <div style="text-align: center;">
     <h1>Users Management</h1>
     <h2>
-        <a href="<c:url value="/insert"/>">Add New User</a>
+        <a href="<c:url value="/admin/insert"/>">Add New User</a>
         &nbsp;&nbsp;&nbsp;
         <a href="<c:url value="/admin"/>">List All Users</a>
 
@@ -30,7 +30,7 @@
             <th>Name</th>
             <th>Login</th>
             <th>Password</th>
-            <th>ROLE</th>
+            <th>ROLES</th>
             <th>Actions</th>
         </tr>
         <c:forEach var="user" items="${listUsers}">
@@ -41,14 +41,14 @@
                 <td><c:out value="${user.password}" /></td>
                 <td><c:out value="${user.roles}" /></td>
                 <td>
-                    <a href="<c:url value="/update?id=${user.id}"/>">Update</a>
+                    <a href="<c:url value="/admin/update?id=${user.id}"/>">Update</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="<c:url value="/delete?id=${user.id}"/>">Delete</a>
+                    <a href="<c:url value="/admin/delete?id=${user.id}"/>">Delete</a>
                 </td>
             </tr>
         </c:forEach>
     </table>
 </div>
-<a href="<c:url value="/logout"/>">Logout</a>
+<a href="<c:url value="/"/>">Logout</a>
 </body>
 </html>

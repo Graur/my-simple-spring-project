@@ -17,7 +17,7 @@
 <div style="text-align: center;">
     <h1>Users Management</h1>
     <h2>
-        <a href="<c:url value="/insert"/>">Add New User</a>
+        <a href="<c:url value="/admin/insert"/>">Add New User</a>
         &nbsp;&nbsp;&nbsp;
         <a href="<c:url value="/admin"/>">List All Users</a>
     </h2>
@@ -69,7 +69,7 @@
                     <th>Password: </th>
                     <td>
                         <input type="text" name="password" size="45" placeholder="Enter password"
-                               value="<c:out value='${user.password}' />"
+                               value="<c:out value='${user.roles}' />"
                         />
                     </td>
                 </tr>
@@ -92,6 +92,6 @@
             </table>
         </form>
 </div>
-<a href="<c:url value="/logout"/>">Logout</a>
+<a href="<c:url value="/"/>">Logout</a>
 </body>
 </html>
