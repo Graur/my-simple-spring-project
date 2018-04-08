@@ -1,8 +1,6 @@
 package com.msp.security.handlers;
 
 import com.msp.model.Role;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -21,8 +19,6 @@ import java.util.Collection;
 
 @Service
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
-    protected Logger logger = LoggerFactory.getLogger(CustomAuthenticationSuccessHandler.class);
-
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     public void onAuthenticationSuccess(HttpServletRequest request,
@@ -36,7 +32,6 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         String targetUrl = determineTargetUrl(authentication);
 
         if (response.isCommitted()) {
-            logger.debug("Response has already been committed. Unable to redirect to " + targetUrl);
             return;
         }
 

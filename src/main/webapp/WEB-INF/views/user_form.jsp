@@ -69,7 +69,7 @@
                     <th>Password: </th>
                     <td>
                         <input type="text" name="password" size="45" placeholder="Enter password"
-                               value="<c:out value='${user.roles}' />"
+                               value="<c:out value='${user.password}' />"
                         />
                     </td>
                 </tr>
@@ -78,7 +78,7 @@
                     <td>
                         <label>
                             <select name="role">
-                                <option value="ADMIN">ADMIN</option>
+                                <option value="ADMIN, USER">ADMIN</option>
                                 <option value="USER">USER</option>
                             </select>
                         </label>

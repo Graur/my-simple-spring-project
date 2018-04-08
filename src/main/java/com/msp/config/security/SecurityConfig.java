@@ -39,10 +39,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/")
-                .failureUrl("/?error")
+                .failureUrl("/?error=fail")
                 .successHandler(customAuthenticationSuccessHandler)
                 .usernameParameter("login")
-                .passwordParameter("password");
+                .passwordParameter("password")
+                .and()
+                .exceptionHandling().accessDeniedPage("/accessDenied");
 
     }
 
@@ -50,4 +52,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(authenticationService);
     }
+
+
 }

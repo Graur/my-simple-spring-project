@@ -5,7 +5,9 @@ import com.msp.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -42,4 +44,22 @@ public class RoleServiceImpl implements RoleService {
     public void deleteRoleById(int id) {
         roleDAO.deleteRoleById(id);
     }
+
+    @Override
+    public Set<Role> getSetOfRoles(String roles) {
+        String[] rolesList = roles.split(",\\s");
+        Set<Role> setRole = new HashSet<>();
+        for (String s : rolesList) {
+            setRole.add(getRoleByRoleName(s));
+        }
+        return setRole;
+    }
+
+    @Override
+    public void updateSetOfRoles(Set<Role> roles) {
+        for (Role role : roles)
+            roleDAO.getRoleByRoleName(role.getName());
+    }
+
+
 }

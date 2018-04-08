@@ -2,17 +2,19 @@
 <%--
   Created by IntelliJ IDEA.
   User: Andrey
-  Date: 30.03.2018
-  Time: 23:41
+  Date: 08.04.2018
+  Time: 23:47
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Welcome, user!</title>
+    <title>Access Denied</title>
 </head>
 <body>
-    <h3 style="color:green;">${message}</h3>
-    <a href="<c:url value="/"/>">Logout</a>
+    <h2>Sorry, ${name}! You do not have permission to view this page.</h2>
+
+    Click <a href="<c:url value="/" /> ">here</a>
+    to go back to the Homepage.
 </body>
 </html>

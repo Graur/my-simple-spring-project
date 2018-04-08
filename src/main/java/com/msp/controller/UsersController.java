@@ -4,16 +4,15 @@ import com.msp.dbService.RoleService;
 import com.msp.dbService.UserService;
 import com.msp.model.Role;
 import com.msp.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
-
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -27,8 +26,13 @@ public class UsersController {
     @Autowired
     RoleService roleService;
 
+    private static final Logger logger = LoggerFactory.getLogger(UsersController.class);
+//    @Autowired
+//    LoggerUtils loggerUtils;
+
     @RequestMapping(value = { "/" }, method = RequestMethod.GET)
     public String homePage(ModelMap model) {
+        logger.info("index page");
         return "index";
     }
 
@@ -37,110 +41,75 @@ public class UsersController {
     public String userPage(ModelMap model, Principal principal) {
         String userName = principal.getName();
         model.addAttribute("message", "Hello, " + userName + "!");
+        logger.info("user page");
         return "user";
     }
 
     //URL ="admin", list all users
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public ModelAndView userForm() {
+    public ModelAndView adminPage() {
         ModelAndView mav = new ModelAndView("users_list");
         List<User> listUsers = userService.getAllUsers();
         mav.addObject("listUsers", listUsers);
-        System.out.println("Controller's userForm method");
+        logger.info("admin page");
         return mav;
     }
 
     //URL ="insert", add user
    @RequestMapping(value = "/admin/insert", method = RequestMethod.GET)
-    public ModelAndView insertUserFormFromGetMethod() {
+    public ModelAndView insertUserForm() {
         ModelAndView mav = new ModelAndView("user_form");
-        System.out.println("Controller's insertUserFormFromGetMethod method");
+       logger.info("add user form");
         return mav;
     }
 
     @RequestMapping(value = "/admin/insert", method = RequestMethod.POST)
-    public ModelAndView insertUserFormFromPostMethod(@ModelAttribute User user, @RequestParam("role") String role) {
-        Role newRole = new Role();
-        newRole.setName(role);
-        roleService.addRole(newRole);
-        System.out.println("Role: " + role);
-        Set<Role> roles = new HashSet<>();
-
-        if(role.equals("ADMIN")){
-            Role adminRole = new Role();
-            adminRole.setName("USER");
-            roles.add(adminRole);
-            roleService.addRole(adminRole);
-        }
-        roles.add(newRole);
+    public ModelAndView insertUser(@ModelAttribute User user, @RequestParam("role") String role) {
+        Set<Role> roles = roleService.getSetOfRoles(role);
         user.setRoles(roles);
+        roleService.updateSetOfRoles(roles);
         userService.insertUser(user);
-        System.out.println("Controller's insertUserFormFromPostMethod method");
-        System.out.println("User role: " + user.getRoles() + " AND user info is: " + user.toString());
+        logger.info("----- ADD USER: User role: " + user.getRoles() + ". And user info is: " + user.toString());
         return new ModelAndView("redirect:/admin");
     }
 
     //URL ="/delete", delete user
     @RequestMapping(value = {"/admin/delete"}, method = RequestMethod.GET)
-    public ModelAndView deleteUserForm(@RequestParam("id") int id) {
-        User user = userService.getUser(id);
-        Set<Role> roles = user.getRoles();
-        Role isItAdminRole = new Role();
-        isItAdminRole.setName("ADMIN");
-        if(roles.contains(isItAdminRole)){
-            roleService.deleteRoleById(id + 1);
-        }
+    public ModelAndView deleteUser(@RequestParam("id") int id) {
         userService.deleteUser(id);
-        roleService.deleteRoleById(id);
-        System.out.println("Controller's deleteUserForm method");
+        logger.info("----- DELETE USER: user with id: " + id + " - was deleted");
         return new ModelAndView("redirect:/admin");
     }
 
     //URL ="update", update user
     @RequestMapping(value = "/admin/update", method = RequestMethod.GET)
-    public ModelAndView updateUserFormGetMethod(@ModelAttribute User user) {
+    public ModelAndView updateUserForm(@ModelAttribute User user) {
         ModelAndView mav = new ModelAndView("user_form");
         int updateUserId = user.getId();
         User existingUser = userService.getUser(updateUserId);
         mav.addObject("user", existingUser);
-        System.out.println("Controller's updateUserFormGetMethod method");
-        System.out.println("USER INFO " + existingUser.toString());
+        logger.info("----- UPDATE USER FORM ----- OLD user info is: " + existingUser.toString());
         return mav;
     }
 
     @RequestMapping(value = "/admin/update", method = RequestMethod.POST)
-    public ModelAndView updateUserFormPostMethod(@ModelAttribute User user, @RequestParam("role") String role) {
-        Role newRole = roleService.getRoleById(user.getId());
-        Set<Role> roles = new HashSet<>();
-        Role oldRole = roleService.getRoleById(user.getId());
-        roles.add(oldRole);
-        newRole.setName(role);
+    public ModelAndView updateUser(@RequestParam("id") int id,
+                                   @RequestParam("name") String name,
+                                   @RequestParam("login") String login,
+                                   @RequestParam("password") String password,
+                                   @RequestParam("role") String role) {
+        User updatedUser = userService.getUser(id);
+        Set<Role> roles = roleService.getSetOfRoles(role);
 
-        if(role.equals("USER") && (role.equals(oldRole.getName()))) {
-            System.out.println("Set of the roles is " + roles);
-            System.out.println("after role service update " + newRole + " " + newRole.getId());
-        } else if (role.equals("ADMIN") && (role.equals(oldRole.getName()))){
-            Role userRole = roleService.getRoleById(user.getId()+ 1);
-            roles.add(userRole);
-        } else if (role.equals("ADMIN") && !(role.equals(oldRole.getName()))){
-            roles.remove(oldRole);
-            roles.add(newRole);
-            roleService.updateRoles(newRole);
-            Role userRole = new Role();
-            userRole.setName("USER");
-            roles.add(userRole);
-            roleService.addRole(userRole);
-        } else if (role.equals("USER") && !(role.equals(oldRole.getName()))){
-            roles.remove(oldRole);
-            roles.add(newRole);
-            roleService.updateRoles(newRole);
-            roleService.deleteRoleById(user.getId()+ 1);
-        }
+        updatedUser.setName(name);
+        updatedUser.setLogin(login);
+        updatedUser.setPassword(password);
+        updatedUser.setRoles(roles);
 
-        user.setRoles(roles);
-        userService.updateUser(user);
-        System.out.println("NEW user info is " + user.toString());
-        System.out.println("Controller's updateUserFormPostMethod method");
+        roleService.updateSetOfRoles(roles);
+        userService.updateUser(updatedUser);
+
+        logger.info("----- UPDATED USER: NEW user info is: " + updatedUser.toString() + ". With gifted roles: " + roles);
         return new ModelAndView("redirect:/admin");
     }
 
@@ -148,7 +117,14 @@ public class UsersController {
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutUser(){
 
-        System.out.println("Controller's logoutUser method");
+        logger.info("+++ LOGOUT +++");
         return "index";
+    }
+    @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
+    public String accessDenied(ModelMap model, Principal principal){
+        String userName = principal.getName();
+        model.addAttribute("name", userName);
+        logger.warn("!!! WARNING !!! USER " + userName + " TRY TO GET ACCESS TO ADMINs PAGES");
+        return "accessDenied";
     }
 }
