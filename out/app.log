@@ -1,0 +1,231 @@
+19:41:40.605 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+19:41:40.618 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+19:41:40.728 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+19:41:41.611 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+19:41:44.042 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@7bedc4d1'
+19:41:44.258 [RMI TCP Connection(2)-127.0.0.1] INFO  c.m.c.s.SecurityConfig - SecurityConfig: configureGlobal com.msp.security.service.AuthenticationService@1151d324
+19:41:44.745 [RMI TCP Connection(2)-127.0.0.1] INFO  c.m.c.s.SecurityConfig - SecurityConfig: configure com.msp.security.handlers.CustomAuthenticationSuccessHandler@56f93f24
+19:41:46.917 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+19:41:48.336 [http-nio-8080-exec-3] INFO  c.m.c.UsersController - index page
+19:41:48.715 [http-nio-8080-exec-6] INFO  c.m.c.UsersController - index page
+19:43:22.781 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+19:43:46.027 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+19:43:46.044 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+19:43:46.197 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+19:43:46.967 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+19:43:48.870 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@374b832e'
+19:43:49.076 [RMI TCP Connection(3)-127.0.0.1] INFO  c.m.c.s.SecurityConfig - !!!SecurityConfig: configureGlobal com.msp.security.service.AuthenticationService@48b8063f
+19:43:49.677 [RMI TCP Connection(3)-127.0.0.1] INFO  c.m.c.s.SecurityConfig - !!!SecurityConfig: configure com.msp.security.handlers.CustomAuthenticationSuccessHandler@172959cf
+19:43:52.401 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+19:43:53.674 [http-nio-8080-exec-3] INFO  c.m.c.UsersController - index page
+19:43:53.824 [http-nio-8080-exec-5] INFO  c.m.c.UsersController - index page
+19:45:49.788 [http-nio-8080-exec-10] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+19:45:50.253 [http-nio-8080-exec-10] INFO  c.m.s.s.AuthenticationService - !!!AuthenticationService +++ USERNAME +++ admin
+19:45:50.258 [http-nio-8080-exec-10] INFO  c.m.s.h.CustomAuthenticationSuccessHandler - !!!CASH class: determineTargetUrl [ADMIN, USER] ADMIN
+19:45:50.259 [http-nio-8080-exec-10] INFO  c.m.s.h.CustomAuthenticationSuccessHandler - !!!CASH class: handle org.springframework.security.web.context.HttpSessionSecurityContextRepository$Servlet3SaveToSessionRequestWrapper@ff7f7c0 org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterResponse@3c2c0909 /admin
+19:45:50.260 [http-nio-8080-exec-10] INFO  c.m.s.h.CustomAuthenticationSuccessHandler - !!!CASH class: onAuthenticationSuccess org.springframework.security.web.context.HttpSessionSecurityContextRepository$Servlet3SaveToSessionRequestWrapper@ff7f7c0
+19:45:50.260 [http-nio-8080-exec-10] INFO  c.m.s.h.CustomAuthenticationSuccessHandler - !!!CASH class: clearAuthenticationAttributes org.springframework.security.web.context.HttpSessionSecurityContextRepository$Servlet3SaveToSessionRequestWrapper@ff7f7c0
+19:45:50.260 [http-nio-8080-exec-10] INFO  c.m.s.h.CustomAuthenticationSuccessHandler - !!!CASH class: clearAuthenticationAttributes SPRING_SECURITY_LAST_EXCEPTION
+19:45:50.261 [http-nio-8080-exec-10] INFO  c.m.s.h.CustomAuthenticationSuccessHandler - !!!CASH class: onAuthenticationSuccess after clear org.springframework.security.web.context.HttpSessionSecurityContextRepository$Servlet3SaveToSessionRequestWrapper@ff7f7c0 org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterResponse@3c2c0909 org.springframework.security.authentication.UsernamePasswordAuthenticationToken@992af965: Principal: User{id=1, name='null', login='admin', password='admin', roles=[ADMIN, USER], enabled=true}; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@2cd90: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: 7459468ECA48E86DD16A31968225A414; Granted Authorities: ADMIN, USER
+19:45:50.346 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - admin page
+20:09:01.809 [http-nio-8080-exec-3] INFO  c.m.c.UsersController - add user form
+20:09:05.788 [http-nio-8080-exec-4] INFO  c.m.c.UsersController - ----- ADD USER: User role: [ADMIN, USER]. And user info is: User{id=3, name='123', login='123', password='123', roles=[ADMIN, USER], enabled=true}
+20:09:05.893 [http-nio-8080-exec-5] INFO  c.m.c.UsersController - admin page
+20:09:14.658 [http-nio-8080-exec-6] INFO  c.m.c.UsersController - index page
+20:09:21.874 [http-nio-8080-exec-7] INFO  c.m.s.s.AuthenticationService - !!!AuthenticationService +++ USERNAME +++ user
+20:09:21.875 [http-nio-8080-exec-7] INFO  c.m.s.h.CustomAuthenticationSuccessHandler - !!!CASH class: determineTargetUrl [USER] USER
+20:09:21.875 [http-nio-8080-exec-7] INFO  c.m.s.h.CustomAuthenticationSuccessHandler - !!!CASH class: handle org.springframework.security.web.context.HttpSessionSecurityContextRepository$Servlet3SaveToSessionRequestWrapper@44caea27 org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterResponse@56ab1c4f /user
+20:09:21.875 [http-nio-8080-exec-7] INFO  c.m.s.h.CustomAuthenticationSuccessHandler - !!!CASH class: onAuthenticationSuccess org.springframework.security.web.context.HttpSessionSecurityContextRepository$Servlet3SaveToSessionRequestWrapper@44caea27
+20:09:21.875 [http-nio-8080-exec-7] INFO  c.m.s.h.CustomAuthenticationSuccessHandler - !!!CASH class: clearAuthenticationAttributes org.springframework.security.web.context.HttpSessionSecurityContextRepository$Servlet3SaveToSessionRequestWrapper@44caea27
+20:09:21.876 [http-nio-8080-exec-7] INFO  c.m.s.h.CustomAuthenticationSuccessHandler - !!!CASH class: clearAuthenticationAttributes SPRING_SECURITY_LAST_EXCEPTION
+20:09:21.876 [http-nio-8080-exec-7] INFO  c.m.s.h.CustomAuthenticationSuccessHandler - !!!CASH class: onAuthenticationSuccess after clear org.springframework.security.web.context.HttpSessionSecurityContextRepository$Servlet3SaveToSessionRequestWrapper@44caea27 org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterResponse@56ab1c4f org.springframework.security.authentication.UsernamePasswordAuthenticationToken@c661ba04: Principal: User{id=2, name='null', login='user', password='user', roles=[USER], enabled=true}; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: 531733F80D4FD31632214565FAC64CE6; Granted Authorities: USER
+20:09:21.887 [http-nio-8080-exec-8] INFO  c.m.c.UsersController - user page
+21:17:08.689 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+21:17:29.921 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+21:17:29.933 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+21:17:30.039 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+21:17:30.758 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+21:17:32.958 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@43848b42'
+21:17:35.928 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+21:17:37.053 [http-nio-8080-exec-3] INFO  c.m.c.UsersController - index page
+21:17:37.253 [http-nio-8080-exec-5] INFO  c.m.c.UsersController - index page
+21:17:43.103 [http-nio-8080-exec-6] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+21:17:43.495 [http-nio-8080-exec-7] INFO  c.m.c.UsersController - user page
+21:17:45.273 [http-nio-8080-exec-8] INFO  c.m.c.UsersController - index page
+21:17:50.617 [http-nio-8080-exec-2] INFO  c.m.c.UsersController - user page
+21:17:53.109 [http-nio-8080-exec-3] WARN  c.m.c.UsersController - !!! WARNING !!! USER user TRY TO GET ACCESS TO ADMINs PAGES
+21:17:53.794 [http-nio-8080-exec-4] WARN  c.m.c.UsersController - !!! WARNING !!! USER user TRY TO GET ACCESS TO ADMINs PAGES
+21:17:54.890 [http-nio-8080-exec-5] INFO  c.m.c.UsersController - index page
+21:17:58.368 [http-nio-8080-exec-7] INFO  c.m.c.UsersController - admin page
+21:18:00.282 [http-nio-8080-exec-8] INFO  c.m.c.UsersController - add user form
+21:18:04.708 [http-nio-8080-exec-9] INFO  c.m.c.UsersController - ----- ADD USER: User role: [ADMIN, USER]. And user info is: User{id=3, name='123', login='123', password='123', roles=[ADMIN, USER], enabled=true}
+21:18:04.789 [http-nio-8080-exec-2] INFO  c.m.c.UsersController - admin page
+21:18:05.656 [http-nio-8080-exec-3] INFO  c.m.c.UsersController - ----- UPDATE USER FORM ----- OLD user info is: User{id=3, name='123', login='123', password='123', roles=[ADMIN, USER], enabled=true}
+21:18:08.547 [http-nio-8080-exec-4] INFO  c.m.c.UsersController - ----- UPDATED USER: NEW user info is: User{id=3, name='123', login='1234', password='123', roles=[USER], enabled=true}. With gifted roles: [USER]
+21:18:08.582 [http-nio-8080-exec-5] INFO  c.m.c.UsersController - admin page
+21:18:10.175 [http-nio-8080-exec-6] INFO  c.m.c.UsersController - ----- DELETE USER: user with id: 3 - was deleted
+21:18:10.208 [http-nio-8080-exec-7] INFO  c.m.c.UsersController - admin page
+21:18:13.650 [http-nio-8080-exec-8] INFO  c.m.c.UsersController - user page
+21:18:14.166 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - user page
+21:18:15.531 [http-nio-8080-exec-10] INFO  c.m.c.UsersController - index page
+21:21:10.307 [http-nio-8080-exec-2] INFO  c.m.c.UsersController - index page
+21:21:23.537 [http-nio-8080-exec-4] INFO  c.m.c.UsersController - index page
+21:21:28.677 [http-nio-8080-exec-6] INFO  c.m.c.UsersController - admin page
+21:21:30.373 [http-nio-8080-exec-7] INFO  c.m.c.UsersController - add user form
+21:21:39.756 [http-nio-8080-exec-8] INFO  c.m.c.UsersController - ----- ADD USER: User role: [USER]. And user info is: User{id=4, name='55', login='55', password='55', roles=[USER], enabled=true}
+21:21:39.789 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - admin page
+21:21:40.870 [http-nio-8080-exec-10] INFO  c.m.c.UsersController - add user form
+21:21:45.260 [http-nio-8080-exec-9] INFO  c.m.c.UsersController - ----- ADD USER: User role: [ADMIN, USER]. And user info is: User{id=5, name='66', login='66', password='66', roles=[ADMIN, USER], enabled=true}
+21:21:45.293 [http-nio-8080-exec-2] INFO  c.m.c.UsersController - admin page
+21:21:46.496 [http-nio-8080-exec-3] INFO  c.m.c.UsersController - index page
+21:21:49.086 [http-nio-8080-exec-5] INFO  c.m.c.UsersController - admin page
+21:21:53.254 [http-nio-8080-exec-6] INFO  c.m.c.UsersController - user page
+21:21:53.843 [http-nio-8080-exec-7] INFO  c.m.c.UsersController - user page
+21:21:55.611 [http-nio-8080-exec-8] INFO  c.m.c.UsersController - index page
+21:21:58.535 [http-nio-8080-exec-10] INFO  c.m.c.UsersController - user page
+21:22:03.627 [http-nio-8080-exec-9] WARN  c.m.c.UsersController - !!! WARNING !!! USER 55 TRY TO GET ACCESS TO ADMINs PAGES
+21:22:04.596 [http-nio-8080-exec-2] INFO  c.m.c.UsersController - index page
+21:22:15.213 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+21:49:33.688 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+21:49:33.710 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+21:49:33.830 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+21:49:34.615 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+21:49:37.269 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@328f0f96'
+21:49:41.025 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+21:49:42.640 [http-nio-8080-exec-3] INFO  c.m.c.UsersController - index page
+21:49:43.137 [http-nio-8080-exec-7] INFO  c.m.c.UsersController - index page
+21:49:52.306 [http-nio-8080-exec-2] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+21:49:52.733 [http-nio-8080-exec-6] INFO  c.m.c.UsersController - index page
+21:50:10.350 [http-nio-8080-exec-10] INFO  c.m.c.UsersController - index page
+21:50:12.656 [http-nio-8080-exec-9] INFO  c.m.c.UsersController - index page
+21:50:38.042 [http-nio-8080-exec-3] INFO  c.m.c.UsersController - user page
+21:50:42.429 [http-nio-8080-exec-7] WARN  c.m.c.UsersController - !!! WARNING !!! USER user TRY TO GET ACCESS TO ADMINs PAGES
+21:50:43.433 [http-nio-8080-exec-2] WARN  c.m.c.UsersController - !!! WARNING !!! USER user TRY TO GET ACCESS TO ADMINs PAGES
+21:50:48.806 [http-nio-8080-exec-6] INFO  c.m.c.UsersController - index page
+22:08:11.562 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+21:12:08.022 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+21:12:08.058 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+21:12:08.238 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+21:12:09.500 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+21:12:12.491 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@571b2107'
+21:14:44.264 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+21:14:46.229 [http-nio-8080-exec-3] INFO  c.m.c.UsersController - index page
+21:14:46.702 [http-nio-8080-exec-5] INFO  c.m.c.UsersController - index page
+21:14:56.876 [http-nio-8080-exec-7] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+21:22:00.917 [http-nio-8080-exec-7] INFO  c.m.c.UsersController - admin page
+21:35:39.111 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+22:17:06.671 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+22:17:06.684 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+22:17:06.818 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+22:17:07.744 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+22:17:10.328 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@606bd43f'
+22:17:14.272 [http-nio-8080-exec-2] INFO  c.m.c.UsersController - index page
+22:17:15.886 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+22:17:16.304 [http-nio-8080-exec-5] INFO  c.m.c.UsersController - index page
+22:17:22.156 [http-nio-8080-exec-7] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+22:17:22.559 [http-nio-8080-exec-9] INFO  c.m.c.UsersController - index page
+22:19:29.930 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+22:19:51.743 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+22:19:51.756 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+22:19:51.871 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+22:19:52.608 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+22:19:54.704 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@6a275306'
+22:19:58.381 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+22:19:59.677 [http-nio-8080-exec-2] INFO  c.m.c.UsersController - index page
+22:19:59.857 [http-nio-8080-exec-4] INFO  c.m.c.UsersController - index page
+22:20:27.225 [http-nio-8080-exec-9] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+22:20:27.609 [http-nio-8080-exec-10] INFO  c.m.c.UsersController - index page
+22:24:05.475 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+22:42:02.962 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+22:42:02.977 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+22:42:03.117 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+22:42:03.860 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+22:42:05.881 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@7625a94b'
+22:42:08.906 [http-nio-8080-exec-2] INFO  c.m.c.UsersController - index page
+22:42:10.113 [http-nio-8080-exec-5] INFO  c.m.c.UsersController - index page
+22:42:10.325 [http-nio-8080-exec-10] INFO  c.m.c.UsersController - index page
+22:42:17.104 [http-nio-8080-exec-9] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+22:42:17.462 [http-nio-8080-exec-4] INFO  c.m.c.UsersController - index page
+23:21:29.252 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+17:57:43.728 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+17:57:43.756 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+17:57:43.860 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+17:57:44.627 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+17:57:46.480 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@7cd2e549'
+17:57:49.533 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+17:57:50.785 [http-nio-8080-exec-3] INFO  c.m.c.UsersController - index page
+17:57:51.060 [http-nio-8080-exec-8] INFO  c.m.c.UsersController - index page
+17:57:57.142 [http-nio-8080-exec-9] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+17:57:57.443 [http-nio-8080-exec-7] INFO  c.m.c.UsersController - index page
+18:03:10.035 [http-nio-8080-exec-10] INFO  c.m.c.UsersController - index page
+18:03:24.910 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+18:03:55.969 [http-nio-8080-exec-3] INFO  c.m.c.UsersController - index page
+18:04:26.745 [http-nio-8080-exec-8] INFO  c.m.c.UsersController - index page
+18:04:54.657 [http-nio-8080-exec-7] INFO  c.m.c.UsersController - admin page
+18:09:55.671 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+18:10:20.819 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+18:10:20.839 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+18:10:21.007 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+18:10:22.291 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+18:10:25.614 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@35739c40'
+18:10:30.757 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+18:10:40.868 [http-nio-8080-exec-2] INFO  c.m.c.UsersController - index page
+18:10:43.064 [http-nio-8080-exec-5] INFO  c.m.c.UsersController - index page
+18:11:25.663 [http-nio-8080-exec-8] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+18:19:24.869 [http-nio-8080-exec-9] INFO  c.m.c.UsersController - index page
+18:19:35.873 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+18:21:32.323 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+18:21:32.337 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+18:21:32.482 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+18:21:33.245 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+18:21:35.015 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@28e55345'
+18:21:37.974 [http-nio-8080-exec-2] INFO  c.m.c.UsersController - index page
+18:21:39.260 [http-nio-8080-exec-4] INFO  c.m.c.UsersController - index page
+18:21:39.447 [http-nio-8080-exec-7] INFO  c.m.c.UsersController - index page
+18:21:44.964 [http-nio-8080-exec-8] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+18:21:45.340 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+18:22:02.662 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+18:23:45.233 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+18:23:45.253 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+18:23:45.435 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+18:23:46.489 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+18:23:49.611 [RMI TCP Connection(5)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@60fc61e1'
+18:23:54.196 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+18:23:55.897 [http-nio-8080-exec-2] INFO  c.m.c.UsersController - index page
+18:23:56.125 [http-nio-8080-exec-4] INFO  c.m.c.UsersController - index page
+18:24:05.273 [http-nio-8080-exec-5] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+18:26:10.076 [http-nio-8080-exec-6] INFO  c.m.c.UsersController - index page
+18:26:21.232 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+18:29:03.516 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+18:29:03.531 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+18:29:03.662 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+18:29:04.385 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+18:29:06.281 [RMI TCP Connection(3)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@15e56629'
+18:29:10.303 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+18:29:11.571 [http-nio-8080-exec-4] INFO  c.m.c.UsersController - index page
+18:29:11.779 [http-nio-8080-exec-2] INFO  c.m.c.UsersController - index page
+18:29:18.082 [http-nio-8080-exec-6] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+18:29:18.558 [http-nio-8080-exec-8] INFO  c.m.c.UsersController - user page
+18:29:23.815 [http-nio-8080-exec-10] INFO  c.m.c.UsersController - user page
+18:29:31.133 [http-nio-8080-exec-9] WARN  c.m.c.UsersController - !!! WARNING !!! USER user TRY TO GET ACCESS TO ADMINs PAGES
+18:29:32.154 [http-nio-8080-exec-7] WARN  c.m.c.UsersController - !!! WARNING !!! USER user TRY TO GET ACCESS TO ADMINs PAGES
+18:29:33.684 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+18:29:39.210 [http-nio-8080-exec-4] INFO  c.m.c.UsersController - admin page
+18:29:42.422 [http-nio-8080-exec-5] INFO  c.m.c.UsersController - admin page
+19:10:53.875 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+20:19:31.315 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.Version - HHH000412: Hibernate Core {5.2.12.Final}
+20:19:31.340 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.c.Environment - HHH000206: hibernate.properties not found
+20:19:31.452 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+20:19:33.882 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+20:19:36.809 [RMI TCP Connection(2)-127.0.0.1] INFO  o.h.t.s.i.SchemaCreatorImpl - HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@309b5a02'
+20:19:40.155 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - index page
+20:19:41.936 [http-nio-8080-exec-3] INFO  c.m.c.UsersController - index page
+20:19:42.890 [http-nio-8080-exec-7] INFO  c.m.c.UsersController - index page
+20:19:51.023 [http-nio-8080-exec-10] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+20:19:51.738 [http-nio-8080-exec-5] INFO  c.m.c.UsersController - admin page
+20:19:54.244 [http-nio-8080-exec-9] INFO  c.m.c.UsersController - add user form
+20:20:00.235 [http-nio-8080-exec-8] INFO  c.m.c.UsersController - ----- ADD USER: User role: [ADMIN, USER]. And user info is: User{id=3, name='123', login='123', password='123', roles=[ADMIN, USER], enabled=true}
+20:20:00.465 [http-nio-8080-exec-1] INFO  c.m.c.UsersController - admin page
+20:20:03.096 [http-nio-8080-exec-2] INFO  c.m.c.UsersController - ----- DELETE USER: user with id: 3 - was deleted
+20:20:03.133 [http-nio-8080-exec-3] INFO  c.m.c.UsersController - admin page
+20:20:17.860 [localhost-startStop-2] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'

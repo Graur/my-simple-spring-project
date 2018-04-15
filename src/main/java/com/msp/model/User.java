@@ -3,7 +3,6 @@ package com.msp.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
@@ -24,7 +23,6 @@ public class User implements UserDetails{
 
     @Column(name = "password")
     private String password;
-
 
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class)
     @JoinTable(name = "permissions",

@@ -2,7 +2,6 @@ package com.msp.config.app;
 
 import com.msp.config.app.origindata.OriginDataInitializer;
 import com.msp.config.security.SecurityConfig;
-import com.msp.logger.LoggerUtils;
 import org.springframework.context.annotation.*;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
